@@ -1,0 +1,56 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 20px;
+    padding: 20px;
+}
+
+/* Tabs Container */
+.resume-tabs {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab Buttons */
+.tab-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background: #007bff;
+    color: #fff;
+}
+
+/* Tab Content */
+.resume-tab-content {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+/* Active Tab Content */
+.resume-tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

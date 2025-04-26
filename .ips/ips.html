@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        <div class="slides" id="slide-container">
+            <div class="slide">
+                <img src="image1.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="image2.jpg" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="image3.jpg" alt="Slide 3">
+            </div>
+        </div>
+
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideContainer = document.getElementById('slide-container');
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            } else if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            updateSlidePosition();
+        }
+
+        function updateSlidePosition() {
+            slideContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000);
+    </script>
+
+</body>
+</html>
